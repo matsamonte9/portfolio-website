@@ -7,8 +7,8 @@ import { ProjectsView } from "./ProjectsView";
 import { ProjectsFooter } from "./ProjectsFooter";
 
 import PersonalWebsiteImage from '../../assets/images/portfolio.png';
-import OnionLensImage from '../../assets/images/onionlens.avif';
-import StoreSystemImage from '../../assets/images/dashboard.jpg';
+import OnionLensImage from '../../assets/images/onionlens.png';
+import StoreSystemImage from '../../assets/images/store.png';
 
 export function ProjectsBody() {
   const [activeProject, setActiveProject] = useState<string | null>(null);
@@ -17,22 +17,22 @@ export function ProjectsBody() {
     image: StoreSystemImage,
     href: "https://github.com/matsamonte9/Store-System",
     title: 'Store System',
-    cutDetails: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus totam...',
-    fullDetails: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam officiis sunt sapiente neque laboriosam fugit adipisci fuga illum, corporis iure dolorum repellat provident eum repellendus excepturi dolorem aperiam nostrum voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae perspiciatis amet iste architecto voluptatum commodi ratione voluptatem, ab eveniet vel ipsum hic consequuntur asperiores sequi ut. Quisquam eos odio praesentium. Store',
+    cutDetails: 'Store System is a full-stack retail management system I developed using...',
+    fullDetails: `Store System is a full-stack retail management system I developed using Vanilla JavaScript, Node.js with Express, and MongoDB, designed to handle inventory control, point-of-sale operations, order tracking, user management, RBAC, and barcode-based workflows to reduce manual processes, workloads, and human error in small retail businesses specifically my Mother's business.`,
     id: 'store'
   }, {
     image: PersonalWebsiteImage,
     href: "https://github.com/matsamonte9/portfolio-website",
     title: 'Portfolio Website',
-    cutDetails: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus totam...',
-    fullDetails: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam officiis sunt sapiente neque laboriosam fugit adipisci fuga illum, corporis iure dolorum repellat provident eum repellendus excepturi dolorem aperiam nostrum voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae perspiciatis amet iste architecto voluptatum commodi ratione voluptatem, ab eveniet vel ipsum hic consequuntur asperiores sequi ut. Quisquam eos odio praesentium. Portfolio',
+    cutDetails: 'A personal portfolio website built using React and TypeScript to showcase...',
+    fullDetails: 'A personal portfolio website built using React and TypeScript to showcase my projects, technical skills, and experience with a focus on clean design, smooth animations, and responsive layouts.',
     id: 'portfolio'
   }, {
     image: OnionLensImage,
     href: "https://github.com/matsamonte9/OnionLens",
     title: 'OnionLens',
-    cutDetails: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus totam...',
-    fullDetails: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam officiis sunt sapiente neque laboriosam fugit adipisci fuga illum, corporis iure dolorum repellat provident eum repellendus excepturi dolorem aperiam nostrum voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae perspiciatis amet iste architecto voluptatum commodi ratione voluptatem, ab eveniet vel ipsum hic consequuntur asperiores sequi ut. Quisquam eos odio praesentium. OnionLens',
+    cutDetails: 'OnionLens is a team-developed machine learning system built using Python...',
+    fullDetails: 'OnionLens is a team-developed machine learning system built using Python, CNNs, and Flask, where I was responsible for creating and optimizing the machine learning model through image processing, model training, and hyperparameter tuning to detect armyworm infestation in onions as an early pest detection tool for local farmers.',
     id: 'onionlens'
   }]
 

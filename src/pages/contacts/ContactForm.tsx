@@ -1,15 +1,18 @@
 import emailjs from '@emailjs/browser';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import './ContactForm.css';
 
 export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formRef.current) return;
+
+    setIsSending(true);
 
     emailjs.sendForm(
       import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -36,6 +39,8 @@ export function ContactForm() {
       formRef.current?.reset();
     }).catch(() => {
       alert("Failed to send message");
+    }).finally(() => {
+      setIsSending(false);
     });
   }
 
@@ -47,7 +52,12 @@ export function ContactForm() {
       <input id="email" name="email" type="email" placeholder="Enter your email" />
       <label htmlFor="message">Write your message here</label>
       <textarea id="message" name="message" placeholder="Enter your message"></textarea>
-      <button type="submit">Submit</button>
+      <button 
+        type="submit"
+        disabled={isSending}
+      >
+        {isSending ? "Sending..." : "Submit"}
+      </button>
     </form>
   );
 }

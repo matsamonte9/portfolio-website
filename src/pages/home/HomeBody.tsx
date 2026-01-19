@@ -21,7 +21,7 @@ export function HomeBody() {
           </p>
         </div>
         <p className="intro-footer">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam atque voluptatum fuga doloribus rem dolores iusto reprehenderit possimus, dolore repellat similique ab ea id, eveniet vel numquam provident deleniti vero.
+          Result-driven <span> Full Stack Web Developer </span> specializing in building web applications with the <span>MERN stack</span>. I enjoy working across the full development lifecycle, from planning and database design to creating responsive, scalable, and user-centered solutions.
         </p>
         <a 
           href="/resume-samonte-mark-anthony.pdf"

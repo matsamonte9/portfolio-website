@@ -4,7 +4,9 @@ export function ContactInfo() {
   return (
     <div className="contacts-info-container">
       <h1>Let's Talk</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore earum quibusdam cupiditate vel distinctio</p>
+      <p>
+        I welcome inquiries about my work, potential collaborations, or professional opportunities. Please don’t hesitate to get in touch via email, phone, or location.
+      </p>
       <div className="contact-details-container">
         <div>
           <i className="fa-solid fa-envelope"></i>

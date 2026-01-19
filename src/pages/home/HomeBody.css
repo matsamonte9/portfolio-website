@@ -42,6 +42,10 @@
   margin-bottom: 36px;
 }
 
+.home-intro-container .intro-footer span {
+  font-weight: 600;
+}
+
 .home-intro-container .view-cv {
   color: rgb(83, 83, 83);
   text-decoration: none;
@@ -69,14 +73,13 @@
 
 .headers-img {
   position: absolute;
-  left: 40px;
+  left: 60px;
   right: 0;
   bottom: 0;
 
   overflow: hidden;
 
-  height: 90%;
-  width: 90%;
+  width: 430px;
 }
 
 .typing {
@@ -127,8 +130,8 @@
   }
 
   .headers-img {
-    top: 30px;
-    left: 10px;
+    top: -80px;
+    left: -50px;
   }
 
   .home-intro-container .intro-header {
