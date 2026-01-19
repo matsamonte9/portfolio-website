@@ -1,0 +1,30 @@
+.projects-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects-footer .see-all-projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+  
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid rgb(83, 83, 83);
+  color: rgb(83, 83, 83);
+  border-radius: 8px;
+  padding: 10px 18px;
+  background-color: white;
+  
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.see-all-projects:hover {
+  color: white;
+  background-color: rgb(83, 83, 83);
+}
+

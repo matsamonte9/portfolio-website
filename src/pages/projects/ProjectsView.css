@@ -1,0 +1,35 @@
+.view-project-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  gap: 30px
+}
+
+.view-project-container i {
+  background-color: white;
+  padding: 12px 15px;
+  font-size: 16px !important;
+  border-radius: 50%;
+  border: 1px solid black;
+
+  cursor: pointer;
+}
+
+.view-project-container i:hover {
+  background-color: black;
+  color: white;
+}
+
+.view-project-container .project-card {
+  background-color: #ECF1F6;
+  padding: 20px;
+
+  border-radius: 10px;
+}
+
+.view-project-container .view-project-image {
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+}

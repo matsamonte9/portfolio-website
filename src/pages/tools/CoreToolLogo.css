@@ -1,0 +1,57 @@
+.core-tool-logo-container {
+  display: flex;
+  justify-content: center;
+
+  gap: 50px;
+}
+
+.core-tool-logo-container div {
+  cursor: pointer;
+}
+
+.core-tool-logo-container .logo {
+  height: 5em;
+  padding: 1.5em;
+
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.core-tool-logo-container div:hover {
+  transform: translateY(-6px);
+}
+
+.core-tool-logo-container .mongodb:hover {
+  filter: drop-shadow(0 4px 12px rgba(0, 44, 102, 0.7));
+}
+
+.core-tool-logo-container .express:hover {
+  filter: drop-shadow(0 4px 12px rgba(50, 50, 50, 0.8));
+}
+
+.core-tool-logo-container .react:hover {
+  filter: drop-shadow(0 4px 10px rgba(97, 218, 251, 0.6));
+}
+
+.core-tool-logo-container .nodejs:hover {
+  filter: drop-shadow(0 4px 10px #68A063aa);
+}
+
+.core-tool-logo-container div p {
+  font-size: 25px;
+  text-align: center;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .core-tool-logo-container div:nth-of-type(3) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}

@@ -1,0 +1,25 @@
+.extra-tool-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 80px;
+}
+
+.extra-tool-logo-container .extra-tool-logo {
+  height: 3.5rem;
+
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.extra-tool-logo-container div {
+  cursor: pointer;
+}
+
+.extra-tool-logo-container div:hover {
+  transform: translateY(-6px);
+}
+
+.extra-tool-logo-container div p {
+  text-align: center;
+}

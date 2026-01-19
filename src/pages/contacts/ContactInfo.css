@@ -1,0 +1,33 @@
+.contacts-info-container h1 {
+  font-size: 50px;
+
+  margin-top: 0;
+}
+
+.contacts-info-container p {
+  margin-bottom: 33px;
+}
+
+.contacts-info-container .contact-details-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.contacts-info-container .contact-details-container div {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.contacts-info-container .contact-details-container div p {
+  margin: 0;
+}
+
+.contacts-info-container .contact-details-container div i {
+  font-size: 20px !important;
+  color: rgb(83, 83, 83);;
+  margin: 2px;
+}

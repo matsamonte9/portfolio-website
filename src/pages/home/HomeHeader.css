@@ -1,0 +1,32 @@
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 40px 0;
+}
+
+.home-header-links-container {
+  display: flex;
+  
+  gap: 50px;
+}
+
+.home-header-links-container .header-link {
+  border: none;
+  color: black;
+  font-size: 18px;
+  font-weight:  300;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+.header-link:first-child {
+  transform: translateY(-3px);
+  text-decoration: underline;
+}
+
+.home-header-links-container .header-link:hover {
+  transform: translateY(-3px);
+  cursor: pointer;
+}
