@@ -1,3 +1,9 @@
 .home {
   justify-content: space-between;
 }
+
+@media (max-width: 900px) {
+  .home {
+    justify-content: space-evenly;
+  }
+}

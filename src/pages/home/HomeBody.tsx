@@ -1,3 +1,5 @@
+import { HomeIcons } from './HomeIcons';
+
 import ProfilePicture from '../../assets/images/profile.png'
 import './HomeBody.css';
 
@@ -12,8 +14,10 @@ export function HomeBody() {
           <h1 className="intro-name">
             Mark
           </h1>
-          <p className="intro-role typing">
-            Full Stack Web Developer | MERN
+          <p className="intro-role">
+            <span className='typing'>
+              Full Stack Web Developer | MERN
+            </span>
           </p>
         </div>
         <p className="intro-footer">
@@ -27,41 +31,12 @@ export function HomeBody() {
         >
           Check CV
         </a>
+        <HomeIcons className='mobile-icons' />
       </div>
       <div className="image-container">
         <img src={ProfilePicture} alt="headers-img" className="headers-img" />
-        <div className="home-icons">
-          <a 
-            className='link-button' 
-            href="https://github.com/matsamonte9"
-            target="_blank"
-            rel='noopener noreferrer'
-          >
-            <i className="fa-brands fa-github"></i>
-          </a>
-          <a 
-            className='link-button' 
-            href="https://www.linkedin.com/in/mark-anthony-samonte-48480b369/"
-            target="_blank" 
-            rel='noopener noreferrer'
-          >
-            <i className="fa-brands fa-linkedin"></i>
-          </a>
-          <a 
-            className='link-button' 
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=mat.samonte9@gmail.com"
-            target="_blank"
-          >
-            <i className="fa-solid fa-envelope"></i>
-          </a>
-          <a 
-            className='link-button'  
-            href=""
-            target="_blank"
-          >
-            <i className="fa-brands fa-twitter"></i>
-          </a>
-        </div>
+        <HomeIcons className='desktop-icons' />
+
       </div>
     </div>
   );

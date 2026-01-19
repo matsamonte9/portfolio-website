@@ -1,7 +1,9 @@
 .home-body {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 80vh;
+
+  margin-top: 20px;
 } 
 
 .home-intro-container {
@@ -60,41 +62,25 @@
 }
 
 .image-container {
-  width: 500px;
+  min-width: 500px;
   background-color: #ededed;
   position: relative;
 }
 
 .headers-img {
   position: absolute;
-  left: -30px;
+  left: 40px;
   right: 0;
   bottom: 0;
 
-  height: 100%;
-}
+  overflow: hidden;
 
-.home-icons {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-
-  position: absolute;
-  top: 20px;
-  right: 10px;
-}
-
-.home-icons .link-button i {
-  font-size: 24px !important;
-  color: rgb(83, 83, 83);;
-  cursor: pointer;
-}
-
-.home-icons .link-button {
-  color: inherit;
+  height: 90%;
+  width: 90%;
 }
 
 .typing {
+  display: inline-block;
   font-size: 20px;
   white-space: nowrap;
   overflow: hidden;
@@ -121,5 +107,53 @@
     animation: none;
     width: auto;
     border: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .home-body {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+  }
+
+  .image-container {
+    order: -1;
+    min-width: 300px;
+    min-height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .headers-img {
+    top: 30px;
+    left: 10px;
+  }
+
+  .home-intro-container .intro-header {
+    text-align: center;
+  }
+
+  .home-intro-container .intro-body .intro-name {
+    text-align: center;
+    font-size: 60px;
+  }
+
+  .home-intro-container .intro-body .intro-role {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .home-intro-container .intro-footer {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .home-intro-container .view-cv {
+    width: fit-content;
+    display: block;
+    margin: 0 auto;
   }
 }

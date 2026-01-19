@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   
-  padding: 40px 0;
+  margin: 20px 0;
 }
 
 .home-header-links-container {
@@ -29,4 +29,50 @@
 .home-header-links-container .header-link:hover {
   transform: translateY(-3px);
   cursor: pointer;
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width: 430.5px) {
+  .home-header {
+    padding: 5px 0 0 0;
+    justify-content: end;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .mobile-nav {
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+
+    z-index: 1000;
+  }
+
+  .mobile-nav button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+  }
 }

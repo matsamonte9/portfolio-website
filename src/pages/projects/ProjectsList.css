@@ -1,6 +1,9 @@
 .project-body {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+
+  gap: 30px;
 }
 
 .project-body .project-card {
@@ -65,3 +68,25 @@
 .project-info-container .project-details {
   font-size: 14px;
 }
+/* 
+@media (max-width: 985px) {
+  .project-body .project-card .project-image-container {
+    height: 200px;
+  }
+}
+
+@media (max-width: 953px) {
+  .project-body .project-card .project-info-container {
+    height: 90px;
+  }
+
+  .project-info-container .project-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .project-info-container p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+} */

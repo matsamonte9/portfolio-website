@@ -5,16 +5,17 @@ import './ProjectsView.css';
 type ProjectsViewProp = {
   activeProject: string;
   setActiveProject: React.Dispatch<React.SetStateAction<string | null>>;
-  products: {
+  product: {
     id: string,
     image: string,
     title: string,
-    fullDetails: string
-  }[];
+    fullDetails: string,
+    cutDetails: string,
+    href: string
+  };
 }
 
-export function ProjectsView({ setActiveProject, activeProject, products }: ProjectsViewProp) {
-  const product = products.find(product => product.id === activeProject);
+export function ProjectsView({ setActiveProject, activeProject, product }: ProjectsViewProp) {
 
   return (
     <motion.div 

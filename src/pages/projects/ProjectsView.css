@@ -33,3 +33,31 @@
   height: 300px;
   border-radius: 10px;
 }
+
+@media (max-width: 1100px) {
+  .view-project-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 635.5px) {
+  .view-project-container .view-project-image {
+    width: 400px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 535.5px) {
+  .view-project-container .view-project-image {
+    width: 300px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 435.8px) {
+  .view-project-container .project-card {
+    order: -1;
+  }
+}
