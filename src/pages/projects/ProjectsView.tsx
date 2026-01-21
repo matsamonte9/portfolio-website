@@ -11,7 +11,8 @@ type ProjectsViewProp = {
     title: string,
     fullDetails: string,
     cutDetails: string,
-    href: string
+    href: string,
+    link: string,
   };
 }
 
@@ -34,6 +35,10 @@ export function ProjectsView({ setActiveProject, activeProject, product }: Proje
       <p className='view-project-details'>
         {product?.fullDetails}
       </p>
+      {product.link 
+        ? <a target='_blank' rel="noopener noreferrer"  href={product.link}>Live Demo</a>
+        : ''
+      }
     </motion.div>
   )
 }
