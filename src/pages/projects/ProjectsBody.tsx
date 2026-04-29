@@ -77,7 +77,7 @@ export function ProjectsBody() {
         "Personal portfolio built with React and TypeScript featuring smooth animations and responsive design.",
       fullDetails:
         "A personal portfolio website built using React and TypeScript to showcase my projects, technical skills, and experience with a focus on clean design, smooth animations, and responsive layouts.",
-      link: "https://portfolio-website-v2fc.vercel.app/",
+      link: "https://www.markanthonysamonte.dev/",
       id: "portfolio",
       tags: ["React", "TypeScript"],
     },
