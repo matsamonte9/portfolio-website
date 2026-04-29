@@ -1,5 +1,6 @@
 import { useRef } from "react";
 
+import { HomeHeader } from './pages/home/HomeHeader';
 import { HomePage } from './pages/home/HomePage';
 import { ToolsPage } from './pages/tools/ToolsPage';
 import { ProjectsPage } from './pages/projects/ProjectsPage';
@@ -23,7 +24,8 @@ function App() {
 
   return (
     <>
-      <HomePage scrollToSection={scrollToSection} sectionRefs={sectionRefs} ref={homeRef} />
+      <HomeHeader scrollToSection={scrollToSection} sectionRefs={sectionRefs} />
+      <HomePage ref={homeRef} />
       <ToolsPage ref={toolsRef} />
       <ProjectsPage ref={projectsRef} />
       <ContactsPage ref={contactsRef} />

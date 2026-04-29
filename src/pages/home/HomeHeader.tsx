@@ -10,49 +10,48 @@ type SectionRefs = {
 
 type HomeHeaderProps = {
   scrollToSection: (ref: React.RefObject<HTMLElement | null>) => void;
-  sectionRefs: SectionRefs
-}
+  sectionRefs: SectionRefs;
+};
 
 export function HomeHeader({ scrollToSection, sectionRefs }: HomeHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const openMenu = () => {
-    setMenuOpen(prev => !prev)
-  }
+  const navItems = [
+    { label: 'Home',     ref: sectionRefs.homeRef },
+    { label: 'Tools',    ref: sectionRefs.toolsRef },
+    { label: 'Projects', ref: sectionRefs.projectsRef },
+    { label: 'Contact',  ref: sectionRefs.contactsRef },
+  ];
 
   return (
     <header className="home-header">
-      <nav className="home-header-links-container desktop-nav">
-        <button className='header-link' onClick={() => scrollToSection(sectionRefs.homeRef)}>Home</button>
-        <button className='header-link' onClick={() => scrollToSection(sectionRefs.toolsRef)}>Tools</button>
-        <button className='header-link' onClick={() => scrollToSection(sectionRefs.projectsRef)}>Projects</button>
-        <button className='header-link' onClick={() => scrollToSection(sectionRefs.contactsRef)}>Contact</button>
+      <button className="nav-brand" onClick={() => scrollToSection(sectionRefs.homeRef)}>
+        Mark.
+      </button>
+
+      <nav className="desktop-nav">
+        {navItems.map(({ label, ref }) => (
+          <button key={label} className="header-link" onClick={() => scrollToSection(ref)}>
+            {label}
+          </button>
+        ))}
       </nav>
 
-      <i 
-        className="fa-solid fa-bars menu-btn" 
-        aria-label='Menu'
-        onClick={openMenu}
-      />
+      <button
+        className="menu-btn"
+        aria-label="Menu"
+        onClick={() => setMenuOpen(prev => !prev)}
+      >
+        <i className={menuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'} />
+      </button>
 
       {menuOpen && (
         <nav className="mobile-nav">
-          <button onClick={() => {
-            scrollToSection(sectionRefs.homeRef)
-            setMenuOpen(false)
-          }}>Home</button>
-          <button onClick={() => {
-            scrollToSection(sectionRefs.toolsRef)
-            setMenuOpen(false)
-          }}>Tools</button>
-          <button onClick={() => {
-            scrollToSection(sectionRefs.projectsRef)
-            setMenuOpen(false)
-          }}>Projects</button>
-          <button onClick={() => {
-            scrollToSection(sectionRefs.contactsRef)
-            setMenuOpen(false)
-          }}>Contact</button>
+          {navItems.map(({ label, ref }) => (
+            <button key={label} onClick={() => { scrollToSection(ref); setMenuOpen(false); }}>
+              {label}
+            </button>
+          ))}
         </nav>
       )}
     </header>

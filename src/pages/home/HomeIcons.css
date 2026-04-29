@@ -1,46 +1,34 @@
 .home-icons {
   display: flex;
-  gap: 15px;
-
-  margin: 20px 0;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.home-icons .link-button i {
-  font-size: 24px !important;
-  color: rgb(83, 83, 83);
-  cursor: pointer;
-}
-
-.home-icons .link-button {
-  color: inherit;
-}
-
-.desktop-icons {
+.icon-btn {
+  width: 40px;
+  height: 40px;
   display: flex;
-  flex-direction: column;
-  
-  position: absolute;
-  top: 20px;
-  right: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #444;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.mobile-icons {
-  display: none;
+.icon-btn:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.icon-btn i {
+  font-size: 16px;
 }
 
 @media (max-width: 900px) {
-  .desktop-icons {
-    display: none !important;
-  }
-  
-  .mobile-icons {
-    display: flex;
+  .home-icons {
     justify-content: center;
-    margin-top: 30px;
-    gap: 25px;
-  }
-  
-  .mobile-icons .link-button i {
-    font-size: 28px !important;
   }
 }

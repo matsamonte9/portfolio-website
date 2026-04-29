@@ -12,12 +12,18 @@ section {
 
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers content vertically */
-  align-items: stretch; /* Makes children fill width */
+  justify-content: center;
+  align-items: stretch;
+
+  scroll-margin-top: 64px;
 }
 
 .home, .projects {
   background-color: #f7f7f7;
+}
+
+.home {
+  padding-top: 64px;
 }
 
 .home, .tools, .projects, .contacts {
