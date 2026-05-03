@@ -23,7 +23,7 @@ export function ProjectsBody() {
       cutDetails:
         "AI-powered platform for multimedia generation with credit-based usage, microservices, and early beta testing",
       fullDetails: `AI Generate is a scalable AI platform for image, video, and audio generation built with a credit-based system for creators, editors, and clients. It uses a microservices architecture, with an AI Chat module built in Python by a dedicated backend team. Services communicate through well-defined APIs between Python and Node.js/Express, ensuring scalability and separation of concerns. Redis and BullMQ handle queueing and job prioritization for heavy AI workloads. Supabase manages authentication and primary storage, while Cloudflare R2 provides backup storage. The system is deployed with Railway for backend services, Vercel for frontend, and RunPod GPUs running ComfyUI for AI generation. A secure GPU proxy layer with API key authentication and tunneling (Cloudflare Tunnel / ngrok) protects direct GPU access and hides public IPs. The platform is currently in a 30-user private beta used to test stability and identify bottlenecks before full release. I lead the project as full-stack developer and system architect, managing frontend, backend, and coordination with Python and frontend developers. Upcoming features include a creative community, collaboration tools between clients and creators, and a job marketplace for editors and brands with integrated portfolios.`,
-      link: "https://ai-generator-frontend-git-master-markanthonyys-projects.vercel.app/",
+      link: "https://image-generator-zeta-sand.vercel.app/",
       id: "placeholder1",
       tags: [
         "Tailwind",

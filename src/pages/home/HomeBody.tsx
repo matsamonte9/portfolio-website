@@ -15,11 +15,11 @@ export function HomeBody() {
         <div className="intro-body">
           <h1 className="intro-name">Mark</h1>
           <p className="intro-role">
-            <span className="typing">Software Engineer</span>
+            <span className="typing">Full Stack Developer</span>
           </p>
         </div>
         <p className="intro-footer">
-          Result-driven <span>Software Engineer</span> focused on building
+          Result-driven <span>Full Stack Developer</span> focused on building
           scalable, user-centered <span>web applications</span>. I work across
           the full development lifecycle, from planning and system design to
           deployment. I use and integrate <span>AI</span> in my workflow to
