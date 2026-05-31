@@ -27,10 +27,12 @@ export function ToolsGrid() {
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      const section = sectionRef.current;
+      const section = sectionRef.current?.closest('section');
       if (!section) return;
       const rect = section.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.5;
+      // Only hijack when 75% of the full tools section is visible
+      const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+      const inView = visible / (rect.bottom - rect.top) >= 0.75;
       if (!inView) return;
       if (isScrolling.current) { e.preventDefault(); return; }
 
@@ -43,9 +45,10 @@ export function ToolsGrid() {
         } else if (current < last) {
           e.preventDefault(); setActiveTab(current + 1); throttle();
         }
+        // at last — release to normal scroll
       } else if (e.deltaY < 0) {
         if (current === null) {
-          // release
+          // release to normal scroll
         } else if (current === 0) {
           e.preventDefault(); setActiveTab(null); throttle();
         } else {

@@ -121,26 +121,29 @@ export function ProjectsList({ setActiveProject, products }: ProjectsListProp) {
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      const section = sectionRef.current;
+      const section = sectionRef.current?.closest('section');
       if (!section) return;
       const rect = section.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.5;
+      // Only hijack when 75% of the full projects section is visible
+      const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+      const inView = visible / (rect.bottom - rect.top) >= 0.75;
       if (!inView) return;
       if (isScrolling.current) { e.preventDefault(); return; }
 
       const cur = activeTabRef.current;
       const last = tabs.length - 1;
 
+      const throttle = () => {
+        isScrolling.current = true;
+        setTimeout(() => { isScrolling.current = false; }, 450);
+      };
+
       if (e.deltaY > 0 && cur < last) {
-        e.preventDefault();
-        setActiveTab(cur + 1);
-        isScrolling.current = true;
-        setTimeout(() => { isScrolling.current = false; }, 450);
+        e.preventDefault(); setActiveTab(cur + 1); throttle();
+        // at last — release to normal scroll
       } else if (e.deltaY < 0 && cur > 0) {
-        e.preventDefault();
-        setActiveTab(cur - 1);
-        isScrolling.current = true;
-        setTimeout(() => { isScrolling.current = false; }, 450);
+        e.preventDefault(); setActiveTab(cur - 1); throttle();
+        // at first — release to normal scroll
       }
     };
 

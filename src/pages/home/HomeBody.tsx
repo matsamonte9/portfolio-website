@@ -15,12 +15,14 @@ export function HomeBody() {
         <div className="intro-body">
           <h1 className="intro-name">Mark</h1>
           <p className="intro-role">
-            <span className="typing">Full Stack Developer | AI Automation</span>
+            <span className="typing">
+              Full Stack Developer | AI Automation Specialist
+            </span>
           </p>
         </div>
         <p className="intro-footer">
-          <span>Full Stack Developer</span> who builds web applications
-          and designs <span>AI-integrated systems</span> and{" "}
+          <span>Full Stack Developer</span> who builds web applications and
+          designs <span>AI-integrated systems</span> and{" "}
           <span>automation workflows</span>. From database architecture to
           deployment — and from AI generation pipelines to workflow automation
           using tools like n8n, Make, and Zapier.
