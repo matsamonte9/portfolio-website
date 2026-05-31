@@ -3,6 +3,32 @@ import OnionLensImage from '../assets/images/onionlens.png';
 import Prokora from '../assets/images/prokora.jpg';
 import StoreSystemImage from '../assets/images/store.png';
 
+import aa1  from '../assets/images/ai-automation-agency/step1.png';
+import aa2  from '../assets/images/ai-automation-agency/step2.png';
+import aa3  from '../assets/images/ai-automation-agency/step3.png';
+import aa4  from '../assets/images/ai-automation-agency/step4.png';
+import aa5  from '../assets/images/ai-automation-agency/step5.png';
+import aa6  from '../assets/images/ai-automation-agency/step6.png';
+import aa6a from '../assets/images/ai-automation-agency/step6a.png';
+import aa7  from '../assets/images/ai-automation-agency/step7.png';
+import aa8  from '../assets/images/ai-automation-agency/step8.png';
+import aa9  from '../assets/images/ai-automation-agency/step9.png';
+import aa10 from '../assets/images/ai-automation-agency/step10.png';
+import aa11 from '../assets/images/ai-automation-agency/step11.png';
+import aa12 from '../assets/images/ai-automation-agency/step12.png';
+import aa13 from '../assets/images/ai-automation-agency/step13.png';
+import aa14 from '../assets/images/ai-automation-agency/step14.png';
+import aa15 from '../assets/images/ai-automation-agency/step15.png';
+import aa16 from '../assets/images/ai-automation-agency/step16.png';
+import aa17 from '../assets/images/ai-automation-agency/step17.png';
+import aa18 from '../assets/images/ai-automation-agency/step18.png';
+import aa19 from '../assets/images/ai-automation-agency/step19.png';
+import aa20 from '../assets/images/ai-automation-agency/step20.png';
+import aa21 from '../assets/images/ai-automation-agency/step21.png';
+import aa22 from '../assets/images/ai-automation-agency/step22.png';
+import aa23 from '../assets/images/ai-automation-agency/step23.png';
+import aa24 from '../assets/images/ai-automation-agency/step24.png';
+
 import ps1 from '../assets/images/pos-system-webhook/step1.png';
 import ps2 from '../assets/images/pos-system-webhook/step2.png';
 import ps3 from '../assets/images/pos-system-webhook/step3.png';
@@ -82,6 +108,19 @@ export const projects: Project[] = [
     id: "onionlens",
     tags: ["Python", "Flask", "CNN", "TensorFlow", "Keras"],
     category: 'fullstack',
+  },
+  {
+    image: aa1,
+    href: "",
+    title: "Lead Management System",
+    cutDetails: "Fully automated lead pipeline inside GoHighLevel — form submission to qualified appointment or closure with zero manual input.",
+    fullDetails: "A fully automated lead pipeline built natively inside GoHighLevel. When a lead submits a form, the system assigns a rep, creates an opportunity, and sends a welcome email automatically. A Conversation AI bot then qualifies leads through a 2-question flow — routing them to appointment booking, human handover, or closure based on their responses. Follow-up sequences run automatically for non-replies. All pipeline stages, tags, and rep notifications are handled end-to-end with zero manual input.",
+    link: "",
+    id: "lead-management",
+    tags: ["GHL", "OpenAI", "Workflows", "Pipelines", "Calendars"],
+    category: 'automation',
+    videoUrl: "",
+    images: [aa1, aa2, aa3, aa4, aa5, aa6, aa6a, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24],
   },
   {
     image: ps1,
