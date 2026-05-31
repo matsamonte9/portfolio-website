@@ -134,13 +134,13 @@
   border-right: 2px solid currentColor;
   width: 0;
   animation:
-    typing 3s steps(40, end) forwards,
+    typing 4s steps(36, end) forwards,
     blink 0.7s step-end infinite;
 }
 
 @keyframes typing {
   to {
-    width: 15.7ch;
+    width: 28ch;
   }
 }
 
@@ -198,9 +198,21 @@
   }
 
   .home-intro-container .intro-footer {
-    font-size: 16px;
+    font-size: 15px;
     max-width: 100%;
     margin-bottom: 24px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Typing animation on mobile */
+  .typing {
+    font-size: 16px;
+    white-space: normal;
+    overflow: visible;
+    width: auto !important;
+    animation: blink 0.7s step-end infinite;
+    display: inline;
   }
 
   .availability-badge {

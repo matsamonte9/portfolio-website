@@ -9,7 +9,7 @@ import "./ToolsPage.css";
 export const ToolsPage = forwardRef<HTMLElement, object>((_props, ref) => (
   <Reveal>
     <section ref={ref} className="tools">
-      <SectionTitle title={"Tools"} />
+      <SectionTitle title="Tools" />
       <ToolsGrid />
     </section>
   </Reveal>

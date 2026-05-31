@@ -1,15 +1,9 @@
 import "./ProjectsFooter.css";
+import { type Project } from "./ProjectsBody";
 
 type ProjectsFooterProp = {
   isViewing: boolean;
-  product: {
-    id: string;
-    image: string;
-    title: string;
-    fullDetails: string;
-    cutDetails: string;
-    href: string;
-  };
+  product: Project | undefined;
 };
 
 export function ProjectsFooter({ isViewing }: ProjectsFooterProp) {

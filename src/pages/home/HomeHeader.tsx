@@ -26,7 +26,7 @@ export function HomeHeader({ scrollToSection, sectionRefs }: HomeHeaderProps) {
   return (
     <header className="home-header">
       <button className="nav-brand" onClick={() => scrollToSection(sectionRefs.homeRef)}>
-        Mark.
+        Mark
       </button>
 
       <nav className="desktop-nav">
