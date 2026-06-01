@@ -3,6 +3,12 @@ import OnionLensImage from '../assets/images/onionlens.png';
 import Prokora from '../assets/images/prokora.jpg';
 import StoreSystemImage from '../assets/images/store.png';
 
+import sm1 from '../assets/images/ai-social-media-automation/step1.png';
+import sm2 from '../assets/images/ai-social-media-automation/step2.png';
+import sm3 from '../assets/images/ai-social-media-automation/step3.png';
+import sm4 from '../assets/images/ai-social-media-automation/step4.png';
+import sm5 from '../assets/images/ai-social-media-automation/step5.png';
+
 import aa1  from '../assets/images/ai-automation-agency/step1.png';
 import aa2  from '../assets/images/ai-automation-agency/step2.png';
 import aa3  from '../assets/images/ai-automation-agency/step3.png';
@@ -112,6 +118,19 @@ export const projects: Project[] = [
   {
     image: aa1,
     href: "",
+    title: "AI Social Media Automation",
+    cutDetails: "End-to-end content pipeline that generates and publishes social media posts automatically via n8n, Claude, and Buffer.",
+    fullDetails: "A fully automated content pipeline built with n8n, triggered via a Tally form webhook. Users submit a topic, platform, and tone — the system handles everything else. Claude generates a platform-optimized hook, caption, hashtags, CTA, and image prompt. A custom image generation API returns a hosted image URL. A formatter node assembles the final payload and routes it to the correct social channel. Buffer receives the post via MCP (Model Context Protocol) and publishes to LinkedIn or Instagram automatically — zero manual intervention required.",
+    link: "",
+    id: "social-media-automation",
+    tags: ["n8n", "Claude", "Buffer", "MCP", "Tally", "Webhook", "Image Generation"],
+    category: 'automation',
+    videoUrl: "https://www.loom.com/embed/19f6d0d608f54082b6b07bfb189d356f",
+    images: [sm1, sm2, sm3, sm4, sm5],
+  },
+  {
+    image: aa1,
+    href: "",
     title: "Lead Management System",
     cutDetails: "Fully automated lead pipeline inside GoHighLevel — form submission to qualified appointment or closure with zero manual input.",
     fullDetails: "A fully automated lead pipeline built natively inside GoHighLevel. When a lead submits a form, the system assigns a rep, creates an opportunity, and sends a welcome email automatically. A Conversation AI bot then qualifies leads through a 2-question flow — routing them to appointment booking, human handover, or closure based on their responses. Follow-up sequences run automatically for non-replies. All pipeline stages, tags, and rep notifications are handled end-to-end with zero manual input.",
@@ -119,7 +138,7 @@ export const projects: Project[] = [
     id: "lead-management",
     tags: ["GHL", "OpenAI", "Workflows", "Pipelines", "Calendars"],
     category: 'automation',
-    videoUrl: "",
+    videoUrl: "https://www.loom.com/embed/8a7ad144a46d451eb03bff93b8313f47",
     images: [aa1, aa2, aa3, aa4, aa5, aa6, aa6a, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24],
   },
   {
@@ -132,7 +151,7 @@ export const projects: Project[] = [
     id: "pos-webhook",
     tags: ["n8n", "Claude", "Slack", "Webhook"],
     category: 'automation',
-    videoUrl: "",
+    videoUrl: "https://www.loom.com/embed/9f7841dbc0aa452a98d0ea18e8f74955",
     images: [ps1, ps2, ps3, ps4, ps5, ps6, ps7, ps8],
   },
   {
@@ -145,7 +164,7 @@ export const projects: Project[] = [
     id: "automation1",
     tags: ["n8n", "Groq", "Google Sheets", "Slack", "Google Calendar", "Tally", "Gmail"],
     category: 'automation',
-    videoUrl: "",
+    videoUrl: "https://www.loom.com/embed/e801f171cf1b4a57b4cda14af823df1d",
     images: [jt1, jt2, jt3, jt4, jt5, jt6, jt7, jt8, jt9, jt10, jt11],
   },
 ];

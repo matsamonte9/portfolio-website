@@ -59,6 +59,7 @@ export const categories: Category[] = [
       { icon: 'simple-icons:zapier',         label: 'Zapier',   color: '#FF4A00', featured: true },
       { icon: 'simple-icons:make',            label: 'Make',     color: '#6D00CC', featured: true },
       { icon: ghlImg,                        label: 'GoHighLevel', color: '#F9B000', featured: true },
+      { icon: 'simple-icons:buffer',         label: 'Buffer',   color: '#168EEA', featured: true },
       { icon: 'simple-icons:slack',          label: 'Slack',    color: '#4A154B', featured: true },
       { icon: 'simple-icons:notion',         label: 'Notion',   color: '#000000', featured: true },
     ],
