@@ -4,33 +4,76 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { type Project } from './ProjectsBody';
 import './ProjectsList.css';
 
+type CarouselState = { activeTab: number; currentIndex: number };
+
 type ProjectsListProp = {
   setActiveProject: (id: string | null) => void;
   products: Project[];
+  carousel: CarouselState;
+  setCarousel: React.Dispatch<React.SetStateAction<CarouselState>>;
 };
 
 
 function CardImageSlider({ product }: { product: Project }) {
   const [idx, setIdx] = useState(0);
-  const imgs = product.images && product.images.length > 1 ? product.images : null;
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [splashDismissed, setSplashDismissed] = useState(false);
+  const hasVideo = !!product.videoUrl;
+  const imgs = product.images ?? [];
+  const total = (hasVideo ? 1 : 0) + imgs.length;
 
-  if (product.videoUrl)
-    return <iframe src={product.videoUrl} className="project-video" allowFullScreen onClick={e => e.stopPropagation()} />;
+  if (total <= 1 && !hasVideo)
+    return <motion.img src={imgs[0] ?? product.image} alt={product.title} layoutId={`image-${product.id}`} />;
 
-  if (imgs) {
-    const prev = (e: React.MouseEvent) => { e.stopPropagation(); setIdx(i => (i - 1 + imgs.length) % imgs.length); };
-    const next = (e: React.MouseEvent) => { e.stopPropagation(); setIdx(i => (i + 1) % imgs.length); };
+  if (total <= 1 && hasVideo)
     return (
-      <div className="card-img-slider">
-        <img src={imgs[idx]} alt={product.title} />
-        <button className="cs-prev" onClick={prev}>‹</button>
-        <button className="cs-next" onClick={next}>›</button>
-        <div className="cs-count">{idx + 1}/{imgs.length}</div>
+      <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+        {!videoLoaded && <div className="card-video-skeleton" />}
+        <iframe
+          src={product.videoUrl}
+          className="project-video"
+          allowFullScreen
+          onLoad={() => setVideoLoaded(true)}
+          onClick={e => e.stopPropagation()}
+          style={{ opacity: videoLoaded ? 1 : 0, transition: 'opacity 0.3s ease' }}
+        />
       </div>
     );
-  }
 
-  return <motion.img src={product.images?.[0] ?? product.image} alt={product.title} layoutId={`image-${product.id}`} />;
+  const isVideo = hasVideo && idx === 0;
+  const imgIdx  = hasVideo ? idx - 1 : idx;
+  const prev = (e: React.MouseEvent) => { e.stopPropagation(); setIdx(i => (i - 1 + total) % total); };
+  const next = (e: React.MouseEvent) => { e.stopPropagation(); setIdx(i => (i + 1) % total); };
+
+  return (
+    <div className="card-img-slider">
+      {isVideo ? (
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+          {isVideo && !splashDismissed && (
+            <div className="card-splash" onClick={e => e.stopPropagation()}>
+              <span>🎧</span>
+              <p>Put your earphones on!</p>
+              <button onClick={() => setSplashDismissed(true)}>Got it →</button>
+            </div>
+          )}
+          {!videoLoaded && <div className="card-video-skeleton" />}
+          <iframe
+            src={product.videoUrl}
+            className="project-video"
+            allowFullScreen
+            onLoad={() => setVideoLoaded(true)}
+            onClick={e => e.stopPropagation()}
+            style={{ opacity: videoLoaded ? 1 : 0, transition: 'opacity 0.3s ease' }}
+          />
+        </div>
+      ) : (
+        <img src={imgs[imgIdx]} alt={product.title} />
+      )}
+      <button className="cs-prev" onClick={prev}>‹</button>
+      <button className="cs-next" onClick={next}>›</button>
+      <div className="cs-count">{idx + 1}/{total}</div>
+    </div>
+  );
 }
 
 function ProjectCard({ product, setActiveProject }: {
@@ -63,14 +106,12 @@ function ProjectCard({ product, setActiveProject }: {
   );
 }
 
-export function ProjectsList({ setActiveProject, products }: ProjectsListProp) {
-  const [{ activeTab, currentIndex }, setCarousel] = useState({ activeTab: 0, currentIndex: 0 });
+export function ProjectsList({ setActiveProject, products, carousel, setCarousel }: ProjectsListProp) {
+  const { activeTab, currentIndex } = carousel;
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const activeTabRef = useRef(0);
   const isScrolling = useRef(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const totalRef = useRef(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     const h = () => setIsMobile(window.innerWidth <= 768);
@@ -100,22 +141,8 @@ export function ProjectsList({ setActiveProject, products }: ProjectsListProp) {
   const pairs: Project[][] = [];
   for (let i = 0; i < cards.length; i += 2) pairs.push(cards.slice(i, i + 2));
 
-  const slides     = isMobile ? cards.map(c => [c]) : pairs;
-  const totalSlides = slides.length;
+  const slides = isMobile ? cards.map(c => [c]) : pairs;
 
-  useEffect(() => { totalRef.current = totalSlides; }, [totalSlides]);
-
-  const startInterval = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % totalRef.current);
-    }, 3000);
-  };
-
-  useEffect(() => {
-    startInterval();
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, [activeTab, isMobile]);
 
   const currentPair = slides[currentIndex] ?? [];
 
@@ -187,7 +214,7 @@ export function ProjectsList({ setActiveProject, products }: ProjectsListProp) {
             <button
               key={i}
               className={`carousel-dot${i === currentIndex ? ' active' : ''}`}
-              onClick={() => { setCurrentIndex(i); startInterval(); }}
+              onClick={() => setCurrentIndex(i)}
             />
           ))}
         </div>

@@ -13,6 +13,7 @@ const FADE_MS = 200;
 export function ProjectsBody() {
   const [activeProject, setActiveProject] = useState<string | null>(null);
   const [fading, setFading] = useState(false);
+  const [carousel, setCarousel] = useState({ activeTab: 0, currentIndex: 0 });
   const product = projects.find(p => p.id === activeProject);
 
   const switchProject = (id: string | null) => {
@@ -38,6 +39,8 @@ export function ProjectsBody() {
             <ProjectsList
               setActiveProject={switchProject}
               products={projects}
+              carousel={carousel}
+              setCarousel={setCarousel}
             />
           )}
         </div>
