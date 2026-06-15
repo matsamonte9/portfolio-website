@@ -1,6 +1,6 @@
 import { HomeIcons } from "./HomeIcons";
 
-import ProfilePicture from "../../assets/images/profile.png";
+import ProfilePicture from "../../assets/images/profile-new-2.jpg";
 import "./HomeBody.css";
 
 export function HomeBody() {
