@@ -4,7 +4,12 @@ export function ByNightSection() {
   return (
     <section className="section">
       <div className="section-label">// by night</div>
-      <a href="#" className="by-night-card">
+      <a
+        href="https://www.facebook.com/profile.php?id=61591056305747"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="by-night-card"
+      >
         <div className="by-night-header">
           <svg width="24" height="24" viewBox="0 0 26 26" aria-hidden="true" className="by-night-sun">
             <circle cx="13" cy="10.5" r="8.5" fill="none" stroke="var(--accent)" strokeWidth="2" />
