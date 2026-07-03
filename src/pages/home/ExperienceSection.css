@@ -1,0 +1,42 @@
+.xp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.xp-row {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.25s ease;
+}
+
+.xp-row:hover {
+  transform: translateX(6px);
+}
+
+.xp-range {
+  font-size: 12.5px;
+  color: var(--accent);
+  min-width: 110px;
+}
+
+.xp-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.xp-description {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  color: var(--sec);
+  margin-top: 4px;
+}
+
+@media (max-width: 620px) {
+  .xp-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

@@ -2,59 +2,12 @@ import AIGenerate from '../assets/images/AI-Generate.png';
 import OnionLensImage from '../assets/images/onionlens.png';
 import Prokora from '../assets/images/prokora.jpg';
 import StoreSystemImage from '../assets/images/store.png';
+import AztridImage from '../assets/images/aztrid.fit.png';
 
-import sm1 from '../assets/images/ai-social-media-automation/step1.png';
-import sm2 from '../assets/images/ai-social-media-automation/step2.png';
-import sm3 from '../assets/images/ai-social-media-automation/step3.png';
-import sm4 from '../assets/images/ai-social-media-automation/step4.png';
-import sm5 from '../assets/images/ai-social-media-automation/step5.png';
-
-import aa1  from '../assets/images/ai-automation-agency/step1.png';
-import aa2  from '../assets/images/ai-automation-agency/step2.png';
-import aa3  from '../assets/images/ai-automation-agency/step3.png';
-import aa4  from '../assets/images/ai-automation-agency/step4.png';
-import aa5  from '../assets/images/ai-automation-agency/step5.png';
-import aa6  from '../assets/images/ai-automation-agency/step6.png';
-import aa6a from '../assets/images/ai-automation-agency/step6a.png';
-import aa7  from '../assets/images/ai-automation-agency/step7.png';
-import aa8  from '../assets/images/ai-automation-agency/step8.png';
-import aa9  from '../assets/images/ai-automation-agency/step9.png';
-import aa10 from '../assets/images/ai-automation-agency/step10.png';
-import aa11 from '../assets/images/ai-automation-agency/step11.png';
-import aa12 from '../assets/images/ai-automation-agency/step12.png';
-import aa13 from '../assets/images/ai-automation-agency/step13.png';
-import aa14 from '../assets/images/ai-automation-agency/step14.png';
-import aa15 from '../assets/images/ai-automation-agency/step15.png';
-import aa16 from '../assets/images/ai-automation-agency/step16.png';
-import aa17 from '../assets/images/ai-automation-agency/step17.png';
-import aa18 from '../assets/images/ai-automation-agency/step18.png';
-import aa19 from '../assets/images/ai-automation-agency/step19.png';
-import aa20 from '../assets/images/ai-automation-agency/step20.png';
-import aa21 from '../assets/images/ai-automation-agency/step21.png';
-import aa22 from '../assets/images/ai-automation-agency/step22.png';
-import aa23 from '../assets/images/ai-automation-agency/step23.png';
-import aa24 from '../assets/images/ai-automation-agency/step24.png';
-
-import ps1 from '../assets/images/pos-system-webhook/step1.png';
-import ps2 from '../assets/images/pos-system-webhook/step2.png';
-import ps3 from '../assets/images/pos-system-webhook/step3.png';
-import ps4 from '../assets/images/pos-system-webhook/step4.png';
-import ps5 from '../assets/images/pos-system-webhook/step5.png';
-import ps6 from '../assets/images/pos-system-webhook/step6.png';
-import ps7 from '../assets/images/pos-system-webhook/step7.png';
-import ps8 from '../assets/images/pos-system-webhook/step8.png';
-
-import jt1  from '../assets/images/job-tracker/step1.png';
-import jt2  from '../assets/images/job-tracker/step2.png';
-import jt3  from '../assets/images/job-tracker/step3.png';
-import jt4  from '../assets/images/job-tracker/step4.png';
-import jt5  from '../assets/images/job-tracker/step5.png';
-import jt6  from '../assets/images/job-tracker/step6.png';
-import jt7  from '../assets/images/job-tracker/step7.png';
-import jt8  from '../assets/images/job-tracker/step8.png';
-import jt9  from '../assets/images/job-tracker/step9.png';
-import jt10 from '../assets/images/job-tracker/step10.png';
-import jt11 from '../assets/images/job-tracker/step11.png';
+import socialMediaAutomationPoster from '../assets/images/video-posters/social-media-automation.jpg';
+import leadManagementPoster from '../assets/images/video-posters/lead-management.jpg';
+import storeWebhookPoster from '../assets/images/video-posters/store-webhook.jpg';
+import jobTrackerPoster from '../assets/images/video-posters/job-tracker.jpg';
 
 export type Project = {
   id: string;
@@ -67,13 +20,17 @@ export type Project = {
   tags: string[];
   category: 'fullstack' | 'automation';
   videoUrl?: string;
-  images?: string[];
+  /** Loom's animated preview GIF for the videoUrl recording, used as the card thumbnail on hover. */
+  videoThumbnail?: string;
+  featured?: boolean;
+  /** Short tag line for the home page's "selected work" row (full `tags` list is used on the All Projects page). */
+  featuredTags?: string[];
 };
 
 export const projects: Project[] = [
   {
     image: AIGenerate,
-    href: "https://github.com/matsamonte9/AI-Generate",
+    href: "",
     title: "AI Generate",
     cutDetails: "AI-powered platform for multimedia generation with credit-based usage, microservices, and early beta testing.",
     fullDetails: `AI Generate is a scalable AI platform for image, video, and audio generation built with a credit-based system for creators, editors, and clients. It uses a microservices architecture with an AI Chat module built in Python. Services communicate through well-defined APIs between Python and Node.js/Express. Redis and BullMQ handle queueing and job prioritization for heavy AI workloads. Supabase manages authentication and primary storage, while Cloudflare R2 provides backup storage. The system is deployed with Railway for backend services, Vercel for frontend, and RunPod GPUs running ComfyUI for AI generation. A secure GPU proxy layer with API key authentication and tunneling protects direct GPU access. The platform is onboarding a 30-user private beta from a creator and e-commerce network to test stability before full release. I lead the project as full-stack developer and system architect.`,
@@ -81,16 +38,31 @@ export const projects: Project[] = [
     id: "ai-generate",
     tags: ["React", "Node.js", "Express", "Supabase", "PostgreSQL", "ComfyUI", "Redis", "BullMQ"],
     category: 'fullstack',
+    featured: true,
+    featuredTags: ["React", "Node", "Supabase", "Redis", "BullMQ", "ComfyUI"],
   },
   {
     image: StoreSystemImage,
-    href: "https://github.com/matsamonte9/Store-System",
+    href: "",
     title: "Store System",
     cutDetails: "Full-stack retail management system with inventory control, POS, order tracking, and barcode-based workflows.",
     fullDetails: `Store System is a full-stack retail management system developed using Vanilla JavaScript, Node.js with Express, and MongoDB, designed to handle inventory control, point-of-sale operations, order tracking, user management, RBAC, and barcode-based workflows to reduce manual processes and human error in small retail businesses — specifically my mother's business.`,
-    link: "https://store-system-sand.vercel.app/login.html",
+    link: "https://store-system-sand.vercel.app/",
     id: "store",
     tags: ["JavaScript", "Node.js", "Express", "MongoDB"],
+    category: 'fullstack',
+    featured: true,
+    featuredTags: ["Node", "MongoDB", "n8n"],
+  },
+  {
+    image: AztridImage,
+    href: "",
+    title: "Aztrid",
+    cutDetails: "Pasabuy management platform with an admin dashboard for warehouse sales and a client-facing storefront that routes orders through Messenger — built end-to-end in a single day with Claude.",
+    fullDetails: "Aztrid is a full-stack pasabuy (personal shopper) management system built with Next.js, Supabase, and deployed on Vercel. An admin dashboard lets the shop owner manage warehouse sales — cut-offs, ETAs, and item allocation — across pasabuy batches, making the whole operation far more efficient than tracking it manually. On the client side, buyers browse the storefront and pick items, colors, and sizes, then complete their order through Messenger. Built end-to-end — admin dashboard, storefront, and Supabase schema — in a single day using Claude.",
+    link: "https://www.aztrid.fit/",
+    id: "aztrid",
+    tags: ["Next.js", "Supabase", "PostgreSQL", "Vercel", "Claude"],
     category: 'fullstack',
   },
   {
@@ -116,7 +88,7 @@ export const projects: Project[] = [
     category: 'fullstack',
   },
   {
-    image: aa1,
+    image: socialMediaAutomationPoster,
     href: "",
     title: "AI Social Media Automation",
     cutDetails: "End-to-end content pipeline that generates and publishes social media posts automatically via n8n, Claude, and Buffer.",
@@ -125,11 +97,13 @@ export const projects: Project[] = [
     id: "social-media-automation",
     tags: ["n8n", "Claude", "Buffer", "MCP", "Tally", "Webhook", "Image Generation"],
     category: 'automation',
+    featured: true,
+    featuredTags: ["n8n", "Claude", "AI Generate", "MCP"],
     videoUrl: "https://www.loom.com/embed/19f6d0d608f54082b6b07bfb189d356f",
-    images: [sm1, sm2, sm3, sm4, sm5],
+    videoThumbnail: "https://cdn.loom.com/sessions/thumbnails/19f6d0d608f54082b6b07bfb189d356f-feb80f08c1170c14.gif",
   },
   {
-    image: aa1,
+    image: leadManagementPoster,
     href: "",
     title: "Lead Management System",
     cutDetails: "Fully automated lead pipeline inside GoHighLevel — form submission to qualified appointment or closure with zero manual input.",
@@ -138,11 +112,13 @@ export const projects: Project[] = [
     id: "lead-management",
     tags: ["GHL", "OpenAI", "Workflows", "Pipelines", "Calendars"],
     category: 'automation',
+    featured: true,
+    featuredTags: ["GoHighLevel", "OpenAI"],
     videoUrl: "https://www.loom.com/embed/8a7ad144a46d451eb03bff93b8313f47",
-    images: [aa1, aa2, aa3, aa4, aa5, aa6, aa6a, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24],
+    videoThumbnail: "https://cdn.loom.com/sessions/thumbnails/8a7ad144a46d451eb03bff93b8313f47-abb6d847eb651c6f.gif",
   },
   {
-    image: ps1,
+    image: storeWebhookPoster,
     href: "",
     title: "Store System Webhook",
     cutDetails: "n8n automation connected to the Store System via webhook — delivering smart Slack notifications, scheduled reports, and an RBAC-powered Claude chatbot.",
@@ -152,10 +128,10 @@ export const projects: Project[] = [
     tags: ["n8n", "Claude", "Slack", "Webhook"],
     category: 'automation',
     videoUrl: "https://www.loom.com/embed/9f7841dbc0aa452a98d0ea18e8f74955",
-    images: [ps1, ps2, ps3, ps4, ps5, ps6, ps7, ps8],
+    videoThumbnail: "https://cdn.loom.com/sessions/thumbnails/9f7841dbc0aa452a98d0ea18e8f74955-89e9fc40d14688ee.gif",
   },
   {
-    image: jt1,
+    image: jobTrackerPoster,
     href: "",
     title: "Job Tracker",
     cutDetails: "AI-powered job application tracker with smart Slack notifications, daily reminders, and a Groq chatbot to manage applications via chat.",
@@ -165,6 +141,6 @@ export const projects: Project[] = [
     tags: ["n8n", "Groq", "Google Sheets", "Slack", "Google Calendar", "Tally", "Gmail"],
     category: 'automation',
     videoUrl: "https://www.loom.com/embed/e801f171cf1b4a57b4cda14af823df1d",
-    images: [jt1, jt2, jt3, jt4, jt5, jt6, jt7, jt8, jt9, jt10, jt11],
+    videoThumbnail: "https://cdn.loom.com/sessions/thumbnails/e801f171cf1b4a57b4cda14af823df1d-ac39bec84abd5aac.gif",
   },
 ];

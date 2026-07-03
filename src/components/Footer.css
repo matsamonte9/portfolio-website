@@ -1,12 +1,28 @@
-footer {
-  margin-left: auto;
-  margin-right: auto;
+.contact-footer.section {
+  padding: clamp(40px, 6vw, 72px) 0;
 }
 
-footer p {
+.contact-links {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  font-size: 14.5px;
+}
 
-  font-size: 14px;
-  color: rgb(114, 114, 114);
+.contact-link {
+  display: inline-block;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.contact-copyright {
+  font-size: 11.5px;
+  color: var(--faint);
+  margin-top: 32px;
 }

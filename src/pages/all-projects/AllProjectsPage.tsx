@@ -1,112 +1,81 @@
-import { useState } from 'react';
-import { Link } from 'react-router';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router';
 import { projects, type Project } from '../../data/projects';
-import { ProjectExpandedView } from '../../components/ProjectExpandedView';
+import { VideoModal } from '../../components/VideoModal';
 import './AllProjectsPage.css';
 
-function ProjectCard({
-  project,
-  isExpanded,
-  onToggle,
-}: {
-  project: Project;
-  isExpanded: boolean;
-  onToggle: () => void;
-}) {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const [splashDismissed, setSplashDismissed] = useState(false);
+function ProjectCard({ project, onWatch }: { project: Project; onWatch: (project: Project) => void }) {
+  const [isHovering, setIsHovering] = useState(false);
+  const hasRepo = !!project.href;
+  const marker = hasRepo ? 'code ↗' : project.link ? 'live ↗' : project.videoUrl ? 'watch ↗' : null;
+  const destination = project.link || project.href;
+  const thumbnailSrc = project.videoThumbnail && isHovering ? project.videoThumbnail : project.image;
+
+  const content = (
+    <>
+      <div className="all-project-image">
+        <img src={thumbnailSrc} alt={project.title} />
+        {project.videoUrl && (
+          <span className="all-project-play-badge">
+            <span className="all-project-play-icon">▶</span> watch demo
+          </span>
+        )}
+      </div>
+      <div className="all-project-content">
+        <div className="all-project-title-row">
+          <span className="all-project-title">{project.title}</span>
+          {marker && <span className="all-project-marker">{marker}</span>}
+        </div>
+        <span className="all-project-tags">{project.tags.join(' · ')}</span>
+        <p className="all-project-details">{project.cutDetails}</p>
+      </div>
+    </>
+  );
+
+  const hoverHandlers = project.videoThumbnail
+    ? { onMouseEnter: () => setIsHovering(true), onMouseLeave: () => setIsHovering(false) }
+    : {};
+
+  if (destination) {
+    return (
+      <a id={project.id} href={destination} target="_blank" rel="noopener noreferrer" className="all-project-card" {...hoverHandlers}>
+        {content}
+      </a>
+    );
+  }
+
+  if (project.videoUrl) {
+    return (
+      <div id={project.id} className="all-project-card all-project-card-clickable" onClick={() => onWatch(project)} {...hoverHandlers}>
+        {content}
+      </div>
+    );
+  }
 
   return (
-    <div
-      className={`all-project-card${isExpanded ? ' expanded' : ''}`}
-      onClick={!isExpanded ? onToggle : undefined}
-    >
-      {isExpanded ? (
-        <ProjectExpandedView
-          product={project}
-          onClose={onToggle}
-        />
-      ) : (
-        <>
-          <div className="all-project-image">
-            {project.videoUrl ? (
-              <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                {!splashDismissed && (
-                  <div className="card-splash" onClick={e => e.stopPropagation()}>
-                    <span>🎧</span>
-                    <p>Put your earphones on!</p>
-                    <button onClick={() => setSplashDismissed(true)}>Got it →</button>
-                  </div>
-                )}
-                {!videoLoaded && <div className="card-video-skeleton" />}
-                <iframe
-                  src={project.videoUrl}
-                  allowFullScreen
-                  onLoad={() => setVideoLoaded(true)}
-                  onClick={e => e.stopPropagation()}
-                  style={{ border: 'none', width: '100%', height: '100%', opacity: videoLoaded ? 1 : 0, transition: 'opacity 0.3s ease' }}
-                />
-              </div>
-            ) : (
-              <img src={project.image} alt={project.title} />
-            )}
-          </div>
-          <div className="all-project-content">
-            <h3 className="all-project-title">{project.title}</h3>
-            <p className="all-project-details">{project.cutDetails}</p>
-            {project.tags.length > 0 && (
-              <div className="all-project-tags">
-                {project.tags.map(tag => <span key={tag} className="all-project-tag">{tag}</span>)}
-              </div>
-            )}
-            <div className="all-project-links" onClick={e => e.stopPropagation()}>
-              {project.href && <a href={project.href} target="_blank" rel="noopener noreferrer">GitHub ↗</a>}
-              {project.link && <a href={project.link} target="_blank" rel="noopener noreferrer">Live ↗</a>}
-            </div>
-          </div>
-        </>
-      )}
+    <div id={project.id} className="all-project-card">
+      {content}
     </div>
   );
 }
 
-const FADE_MS = 200;
+function ProjectSection({ label, items, onWatch }: { label: string; items: Project[]; onWatch: (project: Project) => void }) {
+  const location = useLocation();
 
-function ProjectSection({ title, items }: { title: string; items: Project[] }) {
-  const [activeId, setActiveId] = useState<string | null>(null);
-  const [fading, setFading] = useState(false);
+  useEffect(() => {
+    const hashId = location.hash.replace('#', '');
+    if (!hashId || !items.some(p => p.id === hashId)) return;
+    document.getElementById(hashId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [location.hash]);
+
   if (items.length === 0) return null;
 
-  const handleToggle = (id: string) => {
-    setFading(true);                          // 1. fade out
-    setTimeout(() => {
-      setActiveId(prev => prev === id ? null : id); // 2. rearrange while invisible
-      requestAnimationFrame(() => {           // 3. wait one frame for React to commit
-        requestAnimationFrame(() => {
-          setFading(false);                   // 4. fade back in — cards already settled
-        });
-      });
-    }, FADE_MS);
-  };
-
-  const ordered = activeId
-    ? [items.find(p => p.id === activeId)!, ...items.filter(p => p.id !== activeId)]
-    : items;
-
   return (
-    <div className="all-section">
-      <div className="all-section-header">
-        <span className="all-section-label">{title}</span>
-        <span className="all-section-line" />
-      </div>
-      <div className={`all-project-grid${fading ? ' grid-fading' : ''}`}>
-        {ordered.map(p => (
-          <ProjectCard
-            key={p.id}
-            project={p}
-            isExpanded={activeId === p.id}
-            onToggle={() => handleToggle(p.id)}
-          />
+    <div className="section">
+      <div className="section-label">// {label}</div>
+      <div className="all-project-grid">
+        {items.map(p => (
+          <ProjectCard key={p.id} project={p} onWatch={onWatch} />
         ))}
       </div>
     </div>
@@ -114,19 +83,39 @@ function ProjectSection({ title, items }: { title: string; items: Project[] }) {
 }
 
 export function AllProjectsPage() {
-  const fullStack  = projects.filter(p => p.category === 'fullstack');
+  const [watching, setWatching] = useState<Project | null>(null);
+  const fullStack = projects.filter(p => p.category === 'fullstack');
   const automation = projects.filter(p => p.category === 'automation');
 
   return (
-    <div className="all-page">
-      <div className="all-page-header">
-        <Link to="/" className="back-link">← Back to Home</Link>
-        <h1 className="all-page-title">All Projects</h1>
+    <div className="page-shell">
+      <div className="page-container">
+        <header className="all-header">
+          <span className="home-path">~/mark-samonte/projects</span>
+          <Link to="/" className="cd-home-link">← cd ~/home</Link>
+        </header>
+
+        <section className="all-title-section">
+          <div className="hero-terminal-line">
+            <span className="hero-accent-text">mark@markanthonysamonte.dev</span>:~$ ls ./projects
+          </div>
+          <h1 className="all-title">
+            All Projects
+            <span className="all-title-cursor" />
+          </h1>
+          <p className="all-subhead">Web apps, AI systems and automations — shipped or in production.</p>
+        </section>
+
+        <ProjectSection label="full-stack" items={fullStack} onWatch={setWatching} />
+        <ProjectSection label="automation" items={automation} onWatch={setWatching} />
+
+        <footer className="all-footer">
+          <span className="contact-copyright">© 2026 Mark Samonte · Nueva Ecija, Philippines</span>
+          <Link to="/" className="cd-home-link">← back to portfolio</Link>
+        </footer>
       </div>
-      <div className="all-page-content">
-        <ProjectSection title="Full Stack Web Apps" items={fullStack} />
-        <ProjectSection title="AI & Automation"    items={automation} />
-      </div>
+
+      {watching && <VideoModal project={watching} onClose={() => setWatching(null)} />}
     </div>
   );
 }

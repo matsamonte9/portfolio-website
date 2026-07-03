@@ -1,8 +1,75 @@
+:root {
+  --bg: #0a0a0a;
+  --card: #111111;
+  --ink: #f4f4f2;
+  --text: #e8e8e4;
+  --body: #b6b6b2;
+  --stack: #d4d4d0;
+  --sec: #9a9a97;
+  --path: #8a8a87;
+  --mut: #6a6a67;
+  --dim: #5a5a57;
+  --faint: #4a4a47;
+
+  --accent: #c8f169;
+  --accent-fill: #c8f169;
+  --accent-ink: #0a0a0a;
+
+  --line: rgba(255, 255, 255, 0.08);
+  --row-line: rgba(255, 255, 255, 0.07);
+  --av-border: rgba(255, 255, 255, 0.16);
+  --card-border: rgba(255, 255, 255, 0.09);
+
+  --acc-border: rgba(200, 241, 105, 0.28);
+  --acc-border-strong: rgba(200, 241, 105, 0.55);
+  --acc-tint: rgba(200, 241, 105, 0.08);
+  --acc-glow: rgba(200, 241, 105, 0.3);
+  --acc-pulse: rgba(200, 241, 105, 0.45);
+  --acc-pulse-end: rgba(200, 241, 105, 0);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.22);
+  border-radius: 100px;
+  border: 2px solid var(--bg);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.38);
+}
+
 body {
   position: relative;
-
   margin: 0;
-  font-family: "General Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-fill);
+  color: var(--accent-ink);
 }
 
 .hidden {
@@ -11,8 +78,8 @@ body {
 
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(.22, .61, .36, 1), transform 0.7s cubic-bezier(.22, .61, .36, 1);
 }
 
 .reveal.active {
@@ -26,4 +93,84 @@ body {
     transform: none;
     transition: none;
   }
+}
+
+@keyframes bhblink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes bhc1 {
+  0%, 78% { color: var(--accent); }
+  84%, 100% { color: var(--faint); }
+}
+
+@keyframes bhc2 {
+  0%, 16% { color: var(--faint); }
+  20%, 78% { color: var(--accent); }
+  84%, 100% { color: var(--faint); }
+}
+
+@keyframes bhc3 {
+  0%, 34% { color: var(--faint); }
+  38%, 78% { color: var(--accent); }
+  84%, 100% { color: var(--faint); }
+}
+
+@keyframes bhc4 {
+  0%, 52% { color: var(--faint); }
+  56%, 78% { color: var(--accent); }
+  84%, 100% { color: var(--faint); }
+}
+
+@keyframes bhdash {
+  to { stroke-dashoffset: -16; }
+}
+
+@keyframes bhl1 {
+  0% { opacity: .9; }
+  20% { opacity: .45; }
+  78% { opacity: 1; }
+  84%, 100% { opacity: .12; }
+}
+
+@keyframes bhl2 {
+  0%, 20% { opacity: .12; }
+  38% { opacity: .9; }
+  50% { opacity: .45; }
+  78% { opacity: 1; }
+  84%, 100% { opacity: .12; }
+}
+
+@keyframes bhl3 {
+  0%, 38% { opacity: .12; }
+  56% { opacity: .9; }
+  66% { opacity: .45; }
+  78% { opacity: 1; }
+  84%, 100% { opacity: .12; }
+}
+
+@keyframes bhfadeup {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bhpulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--acc-pulse); }
+  60% { box-shadow: 0 0 0 7px var(--acc-pulse-end); }
+}
+
+@keyframes bhsun {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes bhtype {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes bhsplashfade {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
 }

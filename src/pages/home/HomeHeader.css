@@ -1,131 +1,36 @@
 .home-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  height: 64px;
-  padding: 0 250px;
-
-  background: rgba(247, 247, 247, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  gap: 16px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
 }
 
-.nav-brand {
-  font-size: 20px;
-  font-weight: 700;
-  font-family: inherit;
-  background: none;
-  border: none;
-  color: #111;
-  cursor: pointer;
-  letter-spacing: -0.5px;
-  transition: opacity 0.2s ease;
-}
-
-.nav-brand:hover {
-  opacity: 0.6;
-}
-
-.desktop-nav {
-  display: flex;
-  gap: 36px;
-}
-
-.header-link {
-  position: relative;
-  background: none;
-  border: none;
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 500;
-  color: #555;
-  cursor: pointer;
-  padding: 4px 0;
+.home-path {
+  font-size: 13.5px;
+  color: var(--path);
   transition: color 0.2s ease;
+  cursor: default;
 }
 
-.header-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background: #111;
-  transition: width 0.25s ease;
+.home-path:hover {
+  color: var(--accent);
 }
 
-.header-link:hover {
-  color: #111;
+.availability-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--accent);
 }
 
-.header-link:hover::after {
-  width: 100%;
-}
-
-.menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: #333;
-  cursor: pointer;
-  padding: 4px;
-}
-
-@media (max-width: 1400px) {
-  .home-header { padding: 0 100px; }
-}
-
-@media (max-width: 1100px) {
-  .home-header { padding: 0 20px; }
-}
-
-@media (max-width: 768px) {
-  .desktop-nav {
-    display: none;
-  }
-
-  .menu-btn {
-    display: block;
-  }
-
-  .mobile-nav {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: rgba(247, 247, 247, 0.97);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  }
-
-  .mobile-nav button {
-    background: none;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
-    text-align: left;
-    padding: 16px 20px;
-    cursor: pointer;
-    transition: background 0.15s ease;
-  }
-
-  .mobile-nav button:hover {
-    background: rgba(0, 0, 0, 0.03);
-  }
+.availability-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-fill);
+  animation: bhpulse 2.2s ease-out infinite;
 }

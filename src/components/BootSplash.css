@@ -1,0 +1,55 @@
+.boot-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: radial-gradient(ellipse at 50% 42%, var(--acc-tint), transparent 58%), var(--bg);
+  animation: bhsplashfade 0.45s ease 3.8s forwards;
+}
+
+.boot-splash-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 3px);
+  pointer-events: none;
+}
+
+.boot-splash-lines {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: clamp(11.5px, 2.6vw, 14px);
+  line-height: 1.5;
+}
+
+.boot-line {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+}
+
+.boot-accent {
+  color: var(--accent);
+}
+
+.boot-muted {
+  color: var(--mut);
+}
+
+.boot-ink {
+  color: var(--ink);
+}
+
+.boot-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--accent-fill);
+  margin-left: 8px;
+  transform: translateY(2px);
+  animation: bhblink 0.9s step-end infinite;
+}

@@ -1,0 +1,72 @@
+.automation-diagram {
+  margin-top: 34px;
+  max-width: 480px;
+  animation: bhfadeup 0.6s ease-out 0.5s both;
+}
+
+.automation-label {
+  font-size: 11.5px;
+  color: var(--dim);
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
+}
+
+.automation-svg {
+  display: block;
+  overflow: visible;
+}
+
+.automation-line.l1 {
+  animation: bhl1 5s ease-in-out infinite, bhdash 4s linear infinite;
+}
+
+.automation-line.l2 {
+  animation: bhl2 5s ease-in-out infinite, bhdash 4s linear infinite;
+}
+
+.automation-line.l3 {
+  animation: bhl3 5s ease-in-out infinite, bhdash 4s linear infinite;
+}
+
+.automation-node.c1 {
+  color: var(--faint);
+  animation: bhc1 5s ease-in-out infinite;
+}
+
+.automation-node.c2 {
+  color: var(--faint);
+  animation: bhc2 5s ease-in-out infinite;
+}
+
+.automation-node.c3 {
+  color: var(--faint);
+  animation: bhc3 5s ease-in-out infinite;
+}
+
+.automation-node.c4 {
+  color: var(--faint);
+  animation: bhc4 5s ease-in-out infinite;
+}
+
+.automation-labels-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: clamp(8.5px, 2.1vw, 11.5px);
+  white-space: nowrap;
+}
+
+.automation-node-label {
+  color: var(--faint);
+}
+
+.automation-node-label.c1 { animation: bhc1 5s ease-in-out infinite; }
+.automation-node-label.c2 { animation: bhc2 5s ease-in-out infinite; }
+.automation-node-label.c3 { animation: bhc3 5s ease-in-out infinite; }
+.automation-node-label.c4 { animation: bhc4 5s ease-in-out infinite; }
+
+.automation-arrow {
+  color: var(--faint);
+}
